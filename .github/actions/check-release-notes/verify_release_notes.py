@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from github import Github
+import sys
 
 authentication_token = sys.argv[1]
 if not authentication_token:
