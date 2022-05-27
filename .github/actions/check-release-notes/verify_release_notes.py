@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from github import Github
 
 authentication_token = sys.argv[1]
