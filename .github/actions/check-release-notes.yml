@@ -1,6 +1,0 @@
-name: 'Check RELEASE_NOTES'
-description: 'Verifies that RELEASE_NOTES has been modified for public PRs"
-runs:
-  using: 'docker
-  image: 'Dockerfile'
-
