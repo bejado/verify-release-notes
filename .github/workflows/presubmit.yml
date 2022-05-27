@@ -14,4 +14,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Check RELEASE_NOTES
         uses: ./.github/actions/check-release-notes
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 

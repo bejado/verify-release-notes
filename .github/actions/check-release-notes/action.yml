@@ -1,6 +1,13 @@
 name: 'Check RELEASE_NOTES'
-description: 'Verifies that RELEASE_NOTES has been modified for public PRs"
+description: 'Verifies that RELEASE_NOTES has been modified for public PRs'
+inputs:
+  repo-token:
+    description: 'The GitHub token'
+    required: false
+    default: ${{ github.token }}
 runs:
-  using: 'docker
+  using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo-token }}
 
