@@ -15,7 +15,7 @@ jobs:
       # The check RELEASE_NOTES script uses the GitHub API to verify that RELEASE_NOTES was
       # modified.
       - name: Check out Action
-        uses: Bhacaz/checkout-files
+        uses: Bhacaz/checkout-files@73e17cf
         with:
           files: .github/
       - name: Check RELEASE_NOTES
