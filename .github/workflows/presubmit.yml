@@ -11,8 +11,13 @@ jobs:
     name: build-desktop
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      # We *only* need to check out the .github/ directory.
+      # The check RELEASE_NOTES script uses the GitHub API to verify that RELEASE_NOTES was
+      # modified.
+      - name: Check out Action
+        uses: Bhacaz/checkout-files
+        with:
+          files: .github/
       - name: Check RELEASE_NOTES
         uses: ./.github/actions/check-release-notes
         with:
