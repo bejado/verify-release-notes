@@ -6,4 +6,5 @@ ENV PYTHONUNBUFFERED=1
 
 COPY verify_release_notes.py /verify_release_notes.py
 
+RUN chmod +x /verify_release_notes.py
 ENTRYPOINT [ "/verify_release_notes.py" ]
