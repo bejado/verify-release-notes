@@ -1,5 +1,5 @@
-name: 'Check RELEASE_NOTES'
-description: 'Verifies that RELEASE_NOTES has been modified for public PRs'
+name: 'Check Release Notes'
+description: 'Verifies that a RELEASE_NOTES file has been modified'
 inputs:
   repo-token:
     description: 'The GitHub token'
@@ -12,7 +12,7 @@ inputs:
     required: false
     default: 'internal'
   release-notes-file:
-    description: 'The name of the RELEASE_NOTES file'
+    description: 'The path to the RELEASE_NOTES file'
     required: false
     default: 'RELEASE_NOTES.md'
 runs:

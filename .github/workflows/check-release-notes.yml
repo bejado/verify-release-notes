@@ -1,4 +1,4 @@
-name: Presubmit
+name: Check Release Notes
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   check-release-notes:
-    name: Check release notes
+    name: Check Release Notes
     runs-on: ubuntu-latest
     steps:
       # We *only* need to check out the .github/ directory.
