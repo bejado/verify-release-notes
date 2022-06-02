@@ -1,1 +1,2 @@
 # verify-release-notes
+test
