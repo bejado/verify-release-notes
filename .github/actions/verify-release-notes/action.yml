@@ -1,4 +1,4 @@
-name: 'Check Release Notes'
+name: 'Verify Release Notes'
 description: 'Verifies that a RELEASE_NOTES file has been modified'
 inputs:
   repo-token:
