@@ -21,7 +21,15 @@ def print_usage():
     print('Verify that a GitHub pull request modifies a RELEASE_NOTES file')
     print()
     print('Usage:')
-    print('  verify_release_notes.py <github token> <pull number> <bypass label name> <release notes file>')
+    print('  verify_release_notes.py [arguments]')
+    print()
+    print('Arguments:')
+    print('1. github token')
+    print('2. pull request number')
+    print('3. bypass label name')
+    print('4. release notes file path')
+    print('5. pull request repo full name')
+    print('6. pull request head ref')
     print()
     print('The GITHUB_REPOSITORY environment variable must be set (e.g., google/filament).')
 
@@ -42,7 +50,7 @@ def leave_single_comment(pull_request, comment_body):
         print("Unable to leave comment. Continuing.")
 
 # The first argument is the path to this script.
-if len(sys.argv) < 5:
+if len(sys.argv) != 7:
     print_usage()
     sys.exit(1)
 
@@ -50,6 +58,8 @@ authentication_token = sys.argv[1]
 pull_number = sys.argv[2]
 bypass_label_name = sys.argv[3]
 release_notes_file = sys.argv[4]
+pr_repo_full_name = sys.argv[5]
+pr_head_ref = sys.argv[6]
 
 g = Github(authentication_token)
 
@@ -80,9 +90,11 @@ for file in files:
 
 # At this point, we issue a warning to the PR author to remember to modify the release notes, and
 # exit with failure.
-leave_single_comment(pull_request, (
-        f"Please add a release note line to {release_notes_file}. "
-        f"If this PR does not warrant a release note, add the '{bypass_label_name}' label "
-        f"to this PR."))
+edit_url = f"https://github.com/{pr_repo_full_name}/edit/{pr_head_ref}/{release_notes_file}"
+comment = (f"Please add a release note line to [{release_notes_file}]({edit_url}). "
+    f"If this PR does not warrant a release note, add the '{bypass_label_name}' label "
+    f"to this PR.")
+print(comment)
+leave_single_comment(pull_request, comment)
 
 sys.exit(1)
