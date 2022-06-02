@@ -37,7 +37,7 @@ def leave_single_comment(pull_request, comment_body):
     """ Leaves a comment on a PR once, without leaving a duplicate comment. """
     # To avoid spamming the PR author, we'll use this comment tag (which will render invisibly on
     # GitHub) to check if we've already left a comment on this PR.
-    COMMENT_TAG = '<!-- verify_release_notes -->'
+    COMMENT_TAG = '<!-- verify_release_notes -->\n'
     comments = pull_request.get_issue_comments()
     for comment in comments:
         if comment.body.find(COMMENT_TAG) != -1:
